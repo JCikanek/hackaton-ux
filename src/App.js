@@ -66,8 +66,8 @@ function App() {
     <div className="App">
       <button onClick={btnClick}>Set State</button>
       <Header />
-      <DaysList />
-      <Day arg={state.cas} />
+      <DaysList  dataJidelnicek={state} />
+    
       <Detail />
     </div>
   );
