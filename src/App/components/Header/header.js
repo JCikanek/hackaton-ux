@@ -1,7 +1,8 @@
 import React from "react";
+import { Filter } from "../../../Filter/filter";
 import "./header.css";
 
-export const Header = () => {
+export const Header = ({ onFilterChange }) => {
   const now = new Date();
   const dateFormated = new Intl.DateTimeFormat("cs-CZ", {
     weekday: "short",
@@ -14,6 +15,7 @@ export const Header = () => {
     <div className="App-header">
       <h1>Týdenní menu</h1>
       <div className="date">{dateFormated}</div>
+      <Filter onFilterChange={onFilterChange} />
     </div>
   );
 };

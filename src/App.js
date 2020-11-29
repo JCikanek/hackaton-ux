@@ -9,13 +9,14 @@ import { useEffect, useState } from "react";
 import fakeData from "./jidla.json";
 import { AddMeal } from "./App/components/AddMeal/addMeal";
 
-const url = "/meals";
+const url = "jidla";
 const readData = (url) => {
   return fetch(url).then((res) => res.json());
   /* .then((data) => {
       console.log(data); 
     });*/
 };
+
 const groupData = (data) =>
   data.reduce((acc, meal) => {
     if (acc?.has(meal.datum)) {
@@ -32,9 +33,14 @@ function App() {
   const [state, setState] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState();
 
-  useEffect(() => {
-    readData(url).then((data) => setState(groupData(data)));
-  });
+  const processData = (data) => setState(groupData(data));
+  const handleFilterValues = ({ from, to }) => {
+    const filterUrl = `${url}?datumOd=${from}&datumDo=${to}`;
+    console.log(filterUrl);
+    readData(filterUrl).then(processData);
+  };
+  /* readData(url).then(processData); */
+
   const displayMeal = (meal) => {
     setSelectedMeal(meal);
     console.log("app:", meal);
@@ -42,13 +48,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header onFilterChange={handleFilterValues} />
       <div className="main">
         <DaysList dataJidelnicek={state} onMealDetail={displayMeal} />
 
         {selectedMeal && <Detail mealInfo={selectedMeal} />}
       </div>
-   
     </div>
   );
 }
