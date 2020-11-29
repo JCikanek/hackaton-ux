@@ -9,7 +9,13 @@ const onDetail = meal => {
     onMealDetail(meal);
 }
 
-    const rectCmpMeal = day.map(meal=> <Meal data={meal} onMealDetail={onDetail}/> )
+    const rectCmpMeal = day
+    .sort(
+        (a, b) =>
+          parseInt(a.cas.match(/\d/g).join("")) -
+          parseInt(b.cas.match(/\d/g).join(""))
+      )
+    .map(meal=> <Meal data={meal} onMealDetail={onDetail}/> )
 
     
 

@@ -9,10 +9,15 @@ export const DaysList = ({ dataJidelnicek, onMealDetail }) => {
      
   console.log(dataJidelnicek);
   const dataJidelnicekPole = [...dataJidelnicek.values()];
-  const rectCmpDen = dataJidelnicekPole.map((den) => (
-    <Day key={den} day={den} onMealDetail={onDetail}/>
-  ));
 
+  const rectCmpDen = dataJidelnicekPole.map((den,index) => {
+    return (
+      <Day
+        key={index}
+        day={den}
+        onMealDetail={onDetail}/>
+    );
+  });
   return (
     <div>
       <h1>DayList</h1>
