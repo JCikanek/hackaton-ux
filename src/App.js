@@ -1,11 +1,10 @@
-
 import "./App.css";
 import { Header } from "./App/components/Header/header";
 import { DaysList } from "./App/components/DaysList/daysList";
 import { Detail } from "./App/components/Detail/detail";
 
-import { useState } from "react";
-import fakeData from './jidla.json'
+import { useEffect, useState } from "react";
+import fakeData from "./jidla.json";
 
 const url = "jidla";
 const readData = (url) => {
@@ -35,11 +34,18 @@ function App() {
   const handleFilterValues = ({ from, to }) => {
     const filterUrl = `${url}?datumOd=${from}&datumDo=${to}`;
     console.log(filterUrl);
-    readData(filterUrl).then(processData);
+    readData(filterUrl).then((data) => {
+      console.log(data);
+      processData(data || []);
+    });
   };
-  const addDatatoFake = (zaznam) =>{
-    setState([...state, zaznam])
-  }
+  const addDatatoFake = (zaznam) => {
+    setState([...state, zaznam]);
+  };
+
+  useEffect(() => {
+    readData(url).then(processData);
+  }, []);
 
   const displayMeal = (meal) => {
     setSelectedMeal(meal);
@@ -50,7 +56,11 @@ function App() {
     <div className="App">
       <Header onFilterChange={handleFilterValues} />
       <div className="main">
-        <DaysList dataJidelnicek={fakeDataMap(state)} onMealDetail={displayMeal} onAddData ={addDatatoFake}/>
+        <DaysList
+          dataJidelnicek={fakeDataMap(state)}
+          onMealDetail={displayMeal}
+          onAddData={addDatatoFake}
+        />
 
         {selectedMeal && <Detail mealInfo={selectedMeal} />}
       </div>
