@@ -6,50 +6,10 @@ import { Detail } from "./App/components/Detail/detail";
 
 import { Day } from "./App/components/Day/day";
 import { useState } from "react";
+import fakeData from "./jidla.json";
 
-const fakeData ={
-  "id": 1,
-  "cas": "12:00",
-  "datum": "29.11.2020",
-  "nazev": "Řízek s brambory",
-  "ingredience": [
-    {
-      "nazev": "vepřové maso",
-      "jednotka": "g",
-      "mnozstvi": 200
-    },
-    {
-      "nazev": "strouhanka",
-      "jednotka": "g",
-      "mnozstvi": 20
-    },
-    {
-      "nazev": "vejce",
-      "jednotka": "ks",
-      "mnozstvi": 1
-    },
-    {
-      "nazev": "hladká mouka",
-      "jednotka": "g",
-      "mnozstvi": 20
-    },
-    {
-      "nazev": "sůl",
-      "jednotka": "g",
-      "mnozstvi": 2
-    },
-    {
-      "nazev": "brambory",
-      "jednotka": "g",
-      "mnozstvi": 200
-    },
-    {
-      "nazev": "máslo",
-      "jednotka": "g",
-      "mnozstvi": 20
-    }
-  ]
-}
+
+
 
 
 function App() {

@@ -5,8 +5,10 @@ import { Day } from '../Day/day';
 
 export const DaysList = ({dataJidelnicek}) => {
 console.log(dataJidelnicek);
-const dny = ["Pondělí", "Úterý", "Středa" ]
-const rectCmpDen = dny.map(den=> <Day key={den} dayName={den} time={dataJidelnicek.cas} meal ={dataJidelnicek.nazev} />);
+
+
+
+const rectCmpDen = dataJidelnicek.map(den=> <Day key={den} day={} />);
 
 return(
 <div>
