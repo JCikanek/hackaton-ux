@@ -20,21 +20,24 @@ console.log(fakeDataMap);
 
 function App() {
   const [state, setState] = useState(fakeDataMap);
+  const [selectedMeal, setSelectedMeal] = useState();
 
-  const btnClick = () => {
-    // console.log("Click");
-    const newState = { ...state };
-    newState.cas = "13:00";
-    setState(newState);
+
+
+  const displayMeal = meal => {
+    
+    setSelectedMeal(meal);
+    console.log("app:", meal)
+ 
   };
 
   return (
     <div className="App">
-      <button onClick={btnClick}>Set State</button>
+     
       <Header />
-      <DaysList dataJidelnicek={state} />
+      <DaysList dataJidelnicek={state} onMealDetail={displayMeal}/>
 
-      <Detail />
+    {selectedMeal && <Detail mealInfo={selectedMeal}/>}
     </div>
   );
 }
