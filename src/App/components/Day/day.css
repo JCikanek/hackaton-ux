@@ -1,20 +1,19 @@
 .day {
-    background-color: #d6d8dc;
-    min-height: 20vh;
-    padding: calc(8px + 1vmin);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: calc(8px + 1vmin);
-    color: white;
-  }
+  background-color: #d6d8dc;
+  min-height: 20vh;
+  padding: calc(8px + 1vmin);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(8px + 1vmin);
+  color: #282c34;
+}
 
-  .day__oneMeal{
-    background-color:  #8b8c8e;
-      padding-left: 20px;
-      
-  }
+.day__oneMeal {
+  background-color: #8b8c8e;
+  padding-left: 20px;
+}
 
-  .day__plus{
-      background-color: #8b8c8e;
-  }
+.day__plus {
+  background-color: #8b8c8e;
+}

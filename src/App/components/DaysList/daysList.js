@@ -1,4 +1,5 @@
 import React from "react";
+import "./daysList.css";
 import { Day } from "../Day/day";
 
 export const DaysList = ({ dataJidelnicek, onMealDetail }) => {
@@ -13,5 +14,5 @@ export const DaysList = ({ dataJidelnicek, onMealDetail }) => {
   const rectCmpDen = dataJidelnicekPole.map((den, index) => {
     return <Day key={index} day={den} onMealDetail={onDetail} />;
   });
-  return <div>{rectCmpDen}</div>;
+  return <div className="days-list">{rectCmpDen}</div>;
 };

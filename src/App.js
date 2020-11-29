@@ -22,22 +22,19 @@ function App() {
   const [state, setState] = useState(fakeDataMap);
   const [selectedMeal, setSelectedMeal] = useState();
 
-
-
-  const displayMeal = meal => {
-    
+  const displayMeal = (meal) => {
     setSelectedMeal(meal);
-    console.log("app:", meal)
- 
+    console.log("app:", meal);
   };
 
   return (
     <div className="App">
-     
       <Header />
-      <DaysList dataJidelnicek={state} onMealDetail={displayMeal}/>
+      <div className="main">
+        <DaysList dataJidelnicek={state} onMealDetail={displayMeal} />
 
-    {selectedMeal && <Detail mealInfo={selectedMeal}/>}
+        {selectedMeal && <Detail mealInfo={selectedMeal} />}
+      </div>
     </div>
   );
 }
