@@ -4,7 +4,7 @@ import { Day } from "../Day/day";
 import {AddMeal} from "../AddMeal/addMeal"
 
 
-export const DaysList = ({ dataJidelnicek, onMealDetail }) => {
+export const DaysList = ({ dataJidelnicek, onMealDetail, onAddData }) => {
   const [showNewMeal, setShowNewMeal] = useState(false);
   
   const onDetail = (meal) => {
@@ -16,13 +16,14 @@ export const DaysList = ({ dataJidelnicek, onMealDetail }) => {
        setShowNewMeal(true);
   }
 
+
   
 
   console.log(dataJidelnicek);
   const dataJidelnicekPole = [...dataJidelnicek.values()];
 
   const rectCmpDen = dataJidelnicekPole.map((den, index) => {
-    return <Day key={index} day={den} onMealDetail={onDetail} onAddMeal={addMealHandler} />;
+    return <Day key={index} day={den} onMealDetail={onDetail} onAddMeal={addMealHandler} onAddData={onAddData}/>;
   });
   return <div className="days-list">
        {rectCmpDen} 

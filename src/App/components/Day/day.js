@@ -3,7 +3,7 @@ import { Input } from '../Inputy/Input';
 import { Meal } from '../Meal/meal';
 import './day.css';
 
-export const Day = ({day, onMealDetail, onAddMeal}) => {
+export const Day = ({day, onMealDetail, onAddMeal, onAddData}) => {
 const [showInput, setShowInput] = useState(false);
 
 const onDetail = meal => {
@@ -13,11 +13,6 @@ const onDetail = meal => {
 /*const addMealHandler = ()=> {
   onAddMeal(day);
 }*/
-
-
-
-
-
     const rectCmpMeal = day
     .sort(
         (a, b) =>
@@ -26,6 +21,7 @@ const onDetail = meal => {
       )
     .map(meal=> <Meal data={meal} onMealDetail={onDetail}/> )
 
+    const date = day[0].datum;
     
 
     return(
@@ -40,7 +36,7 @@ const onDetail = meal => {
 <div className="day__plus">
     
     { showInput===false && <button onClick={() => setShowInput(true) }> +  </button> }
-   {showInput && <Input /> }
+   {showInput && <Input onAddData={onAddData} date={date}/> }
 </div>
 
         
