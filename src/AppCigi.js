@@ -52,7 +52,7 @@ const fakeData ={
 }
 
 
-function App() {
+function AppCigi() {
   const [state,setState ] = useState(fakeData);
 
   const btnClick = ()=>{
