@@ -1,22 +1,17 @@
-import React from 'react';
-import { Day } from '../Day/day';
+import React from "react";
+import { Day } from "../Day/day";
 
+export const DaysList = ({ dataJidelnicek }) => {
+  console.log(dataJidelnicek);
+  const dataJidelnicekPole = [...dataJidelnicek.values()];
+  const rectCmpDen = dataJidelnicekPole.map((den) => (
+    <Day key={den} day={den} />
+  ));
 
-
-export const DaysList = ({dataJidelnicek}) => {
-console.log(dataJidelnicek);
-
-
-
-const rectCmpDen = dataJidelnicek.map(den=> <Day key={den} day={} />);
-
-return(
-<div>
-
-     <h1>DayList</h1> 
-    {rectCmpDen}
-
-     
-</div>)
-}
-;
+  return (
+    <div>
+      <h1>DayList</h1>
+      {rectCmpDen}
+    </div>
+  );
+};
