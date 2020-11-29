@@ -4,7 +4,7 @@ import React from 'react';
 export const DaysList = () => (
 <div>
 
-     <h>DayList</h>  
+     <h1>DayList</h1>  
 
      
 </div>
