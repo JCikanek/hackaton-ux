@@ -2,12 +2,17 @@ import React from 'react';
 import { Meal } from '../Meal/meal';
 import './day.css';
 
-export const Day = ({day, onMealDetail}) => {
+export const Day = ({day, onMealDetail, onAddMeal}) => {
 
 const onDetail = meal => {
     console.log("day: ", meal);
     onMealDetail(meal);
 }
+const addMealHandler = ()=> {
+  onAddMeal(day);
+}
+
+
 
     const rectCmpMeal = day
     .sort(
@@ -30,7 +35,7 @@ const onDetail = meal => {
 
 <div className="day__plus">
     
-    <p>+</p>
+   <button onClick={addMealHandler }> +  </button> 
 </div>
     
 </div>

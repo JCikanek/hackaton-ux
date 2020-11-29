@@ -7,6 +7,7 @@ import { Detail } from "./App/components/Detail/detail";
 import { Day } from "./App/components/Day/day";
 import { useState } from "react";
 import fakeData from "./jidla.json";
+import { AddMeal } from "./App/components/AddMeal/addMeal";
 
 const url = "https://crudcrud.com/api/d6ffc80c74d94c669356ad099c86701d/meals";
 const readData = (url) => {
@@ -30,6 +31,7 @@ function App() {
   const [state, setState] = useState(fakeDataMap);
   const [selectedMeal, setSelectedMeal] = useState();
 
+
   const displayMeal = (meal) => {
     setSelectedMeal(meal);
     console.log("app:", meal);
@@ -43,6 +45,7 @@ function App() {
 
         {selectedMeal && <Detail mealInfo={selectedMeal} />}
       </div>
+   
     </div>
   );
 }
