@@ -1,13 +1,11 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import { Header } from "./App/components/Header/header";
 import { DaysList } from "./App/components/DaysList/daysList";
 import { Detail } from "./App/components/Detail/detail";
 
-import { Day } from "./App/components/Day/day";
-import { useEffect, useState } from "react";
-import fakeData from "./jidla.json";
-import { AddMeal } from "./App/components/AddMeal/addMeal";
+import { useState } from "react";
+import fakeData from './jidla.json'
 
 const url = "jidla";
 const readData = (url) => {
@@ -16,9 +14,8 @@ const readData = (url) => {
       console.log(data); 
     });*/
 };
-
-const groupData = (data) =>
-  data.reduce((acc, meal) => {
+function fakeDataMap(data) {
+  return data.reduce((acc, meal) => {
     if (acc?.has(meal.datum)) {
       acc.get(meal.datum).push(meal);
     } else {
@@ -26,20 +23,23 @@ const groupData = (data) =>
     }
     return acc;
   }, new Map());
+}
 
 //readData(url);
 
 function App() {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState(fakeData);
   const [selectedMeal, setSelectedMeal] = useState();
 
-  const processData = (data) => setState(groupData(data));
+  const processData = (data) => setState(data);
   const handleFilterValues = ({ from, to }) => {
     const filterUrl = `${url}?datumOd=${from}&datumDo=${to}`;
     console.log(filterUrl);
     readData(filterUrl).then(processData);
   };
-  /* readData(url).then(processData); */
+  const addDatatoFake = (zaznam) =>{
+    setState([...state, zaznam])
+  }
 
   const displayMeal = (meal) => {
     setSelectedMeal(meal);
@@ -50,7 +50,7 @@ function App() {
     <div className="App">
       <Header onFilterChange={handleFilterValues} />
       <div className="main">
-        <DaysList dataJidelnicek={state} onMealDetail={displayMeal} />
+        <DaysList dataJidelnicek={fakeDataMap(state)} onMealDetail={displayMeal} onAddData ={addDatatoFake}/>
 
         {selectedMeal && <Detail mealInfo={selectedMeal} />}
       </div>
