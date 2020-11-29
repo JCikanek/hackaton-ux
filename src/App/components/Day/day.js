@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Input } from '../Inputy/Input';
 import { Meal } from '../Meal/meal';
 import './day.css';
 
 export const Day = ({day, onMealDetail, onAddMeal}) => {
+const [showInput, setShowInput] = useState(false);
 
 const onDetail = meal => {
     console.log("day: ", meal);
     onMealDetail(meal);
 }
-const addMealHandler = ()=> {
+/*const addMealHandler = ()=> {
   onAddMeal(day);
-}
+}*/
+
+
 
 
 
@@ -35,8 +39,11 @@ const addMealHandler = ()=> {
 
 <div className="day__plus">
     
-   <button onClick={addMealHandler }> +  </button> 
+    { showInput===false && <button onClick={() => setShowInput(true) }> +  </button> }
+   {showInput && <Input /> }
 </div>
+
+        
     
 </div>
  
