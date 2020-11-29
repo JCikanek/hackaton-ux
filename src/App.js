@@ -39,9 +39,8 @@ function App() {
     console.log(filterUrl);
     readData(filterUrl).then(processData);
   };
-  /* useEffect(() => {
-    readData(url).then(processData);
-  }); */
+  /* readData(url).then(processData); */
+
   const displayMeal = (meal) => {
     setSelectedMeal(meal);
     console.log("app:", meal);
